@@ -30,12 +30,15 @@ function App() {
     if (localStorage.getItem("token")) {
       setToken(localStorage.getItem("token"));
     } else {
-      if (!(
+      if (
+        !(
           location.pathname === "/" ||
-          location.pathname.includes('register')||
-          location.pathname.includes('about') ||
-          location.pathname.includes('products')||
-          location.pathname.includes('cart')
+          location.pathname.includes("register") ||
+          location.pathname.includes("about") ||
+          location.pathname.includes("products") ||
+          location.pathname.includes("cart") ||
+          location.pathname.includes("checkout")||
+          location.pathname.includes("orders")
         )
       ) {
         navigate("/login");
@@ -43,12 +46,12 @@ function App() {
     }
   }, [navigate]);
 
-  useEffect(()=>{
-    let storage = []
-    if(localStorage.getItem("cart")){
-      setCart(JSON.parse(localStorage.getItem("cart")))
+  useEffect(() => {
+    let storage = [];
+    if (localStorage.getItem("cart")) {
+      setCart(JSON.parse(localStorage.getItem("cart")));
     }
-  },[])
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -99,21 +102,17 @@ function App() {
           <Route
             path="/checkout"
             element={
-              <PrivateRoute isAuth={!!token}>
-                <MainLayout>
-                  <Checkout></Checkout>
-                </MainLayout>
-              </PrivateRoute>
+              <MainLayout>
+                <Checkout></Checkout>
+              </MainLayout>
             }
           ></Route>
           <Route
             path="/orders"
             element={
-              <PrivateRoute isAuth={!!token}>
-                <MainLayout>
-                  <Orders></Orders>
-                </MainLayout>
-              </PrivateRoute>
+              <MainLayout>
+                <Orders></Orders>
+              </MainLayout>
             }
           ></Route>
           <Route path="*" element={<Error></Error>}></Route>

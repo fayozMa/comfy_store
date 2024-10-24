@@ -59,13 +59,16 @@ function Header() {
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="http://localhost:5173/about">About</a>
+                <a href="/about">About</a>
               </li>
               <li>
-                <a href="http://localhost:5173/products">Products</a>
+                <a href="/products">Products</a>
               </li>
               <li>
-                <a href="http://localhost:5173/cart">Cart</a>
+                <a href="/cart">Cart</a>
+              </li>
+              <li>
+                <a href="/orders">Orders</a>
               </li>
             </ul>
           </div>
