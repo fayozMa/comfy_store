@@ -1,13 +1,13 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext} from 'react'
 import { CartContext } from '../App'
 function Cart() {
   const { cart, setCart } = useContext(CartContext)
   console.log(cart);
   
   return (
-    <div>
+    <section className='max-w-[1088px] mx-auto py-20'>
       {
-        cart.lenght > 0 && cart.map(function(value) {
+        cart.length > 0 && cart.map(function(value) {
           return (
             <div>
               <div className="img"></div>
@@ -26,7 +26,7 @@ function Cart() {
           )
         })
       }
-    </div>
+    </section>
   )
 }
 

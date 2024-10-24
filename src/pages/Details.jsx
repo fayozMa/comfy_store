@@ -28,10 +28,10 @@ function Details() {
     e.preventDefault();
 
     const data = {
-      product: product,
       color: color,
-      count: count,
+      count: Number(count),
       id: product.id,
+      data: product,
     };
 
     let copied = [...cart];
@@ -69,10 +69,12 @@ function Details() {
             <h4 className="text-xl text-neutral-content font-bold mt-2">
               {product.attributes.company}
             </h4>
-            <p className="mt-3 text-xl">{product.attributes.price}</p>
+            <p className="mt-3 text-xl">${product.attributes.price}</p>
             <p className="mt-6 leading-8">{product.attributes.description}</p>
             <div className="mt-6">
-              <h4 className="text-md font-medium tracking-wider capitalize">colors</h4>
+              <h4 className="text-md font-medium tracking-wider capitalize">
+                colors
+              </h4>
               {product.attributes.colors.length > 0 &&
                 product.attributes.colors.map((colorProduct) => {
                   return (
@@ -84,45 +86,53 @@ function Details() {
                         border:
                           color === colorProduct ? "2px solid black" : "none",
                       }}
-                      className="block w-3 h-3 rounded-full cursor-pointer"
+                      className="badge w-6 h-6 mr-2 border-2 border-secondary cursor-pointer mt-2"
                     ></span>
                   );
                 })}
             </div>
+            <div className="form-control w-full max-w-xs">
+              <label className="label" htmlFor="amount">
+                <h4 className="text-md font-medium -tracking-wider capitalize">
+                  Amount
+                </h4>
+              </label>
+              <select
+                className="select select-secondary select-bordered select-md"
+                value={count}
+                id="amount"
+                onChange={(e) => {
+                  setCount(e.target.value);
+                }}
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+              </select>
+            </div>
+            <button onClick={handleSetCart} className="btn btn-secondary btn-md mt-10">
+              ADD TO BAG
+            </button>
           </div>
         </div>
       )}
-      <select
-        className="select"
-        value={count}
-        onChange={(e) => {
-          setCount(e.target.value);
-        }}
-      >
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
-        <option>13</option>
-        <option>14</option>
-        <option>15</option>
-        <option>16</option>
-        <option>17</option>
-        <option>18</option>
-        <option>19</option>
-        <option>20</option>
-      </select>
-      <button onClick={handleSetCart} className="btn btn-primary">
-        ADD TO BAG
-      </button>
     </section>
   );
 }
